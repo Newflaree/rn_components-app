@@ -29,12 +29,11 @@ export const MenuItem = ({
   isFirst,
   isLast
 }: Props) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   return (
     <Pressable
-      onPress={ () => console.log( 'Tap' ) }
-      //onPress={ () => navigation.navigate( component ) }
+      onPress={ () => navigation.navigate( component ) }
     >
       <View style={{
         ...styles.container,
