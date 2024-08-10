@@ -1,17 +1,20 @@
-// React Native
-import {
-  Text,
-  View
-} from 'react-native';
+// React
+import { useState } from 'react';
 // Components
 import {
-  Button,
   Card,
+  CustomSwitch,
   CustomView
 } from '../../components';
 
 
 export const SwitchScreen = () => {
+  const [ state, setState ] = useState({
+    isActive: true,
+    isHungry: false,
+    isHappy: true
+  })
+
   return (
     <CustomView
       style={{
@@ -19,6 +22,25 @@ export const SwitchScreen = () => {
         paddingHorizontal: 10
       }}
     >
+      <Card>
+        <CustomSwitch
+          isOn={ state.isActive }
+          onChange={ ( value ) => setState({ ...state, isActive: value }) }
+          text='¿Está activo?'
+        />
+
+        <CustomSwitch
+          isOn={ state.isHungry }
+          onChange={ ( value ) => setState({ ...state, isHungry: value }) }
+          text='¿Tiene hambre?'
+        />
+
+        <CustomSwitch
+          isOn={ state.isHappy }
+          onChange={ ( value ) => setState({ ...state, isHappy: value }) }
+          text='¿Es feliz?'
+        />
+      </Card>
     </CustomView>
   );
 }
