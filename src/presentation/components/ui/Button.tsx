@@ -43,7 +43,7 @@ export const Button = ({
         },
         styles
       ]}>
-        Button
+        { text }
       </Text>
     </Pressable>
   );
