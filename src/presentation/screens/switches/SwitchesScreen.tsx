@@ -4,7 +4,8 @@ import { useState } from 'react';
 import {
   Card,
   CustomSwitch,
-  CustomView
+  CustomView,
+  Separator
 } from '../../components';
 
 
@@ -29,11 +30,15 @@ export const SwitchScreen = () => {
           text='¿Está activo?'
         />
 
+        <Separator />
+
         <CustomSwitch
           isOn={ state.isHungry }
           onChange={ ( value ) => setState({ ...state, isHungry: value }) }
           text='¿Tiene hambre?'
         />
+
+        <Separator />
 
         <CustomSwitch
           isOn={ state.isHappy }

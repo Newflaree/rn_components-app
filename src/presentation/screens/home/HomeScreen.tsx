@@ -1,7 +1,6 @@
 // React Native
 import {
   ScrollView,
-  Text,
   View,
 } from 'react-native';
 // Components
