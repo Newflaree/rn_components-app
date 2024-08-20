@@ -82,7 +82,6 @@ export const MenuItem = ({
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',

@@ -3,7 +3,6 @@ import { ReactNode } from 'react';
 // React Native
 import {
   StyleProp,
-  Text,
   View,
   ViewStyle
 } from 'react-native';
@@ -21,7 +20,12 @@ export const CustomView = ({
   children
 }: Props) => {
   return (
-    <View style={[ globalStyles.mainContainer, style ]}>
+    <View
+      style={[
+        globalStyles.mainContainer,
+        style
+      ]}
+    >
       { children }
     </View>
   );

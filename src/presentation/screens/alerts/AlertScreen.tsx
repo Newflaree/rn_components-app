@@ -1,7 +1,6 @@
 // React Native
 import {
   Alert,
-  Text,
   View
 } from 'react-native';
 // Components
@@ -52,6 +51,17 @@ export const AlertScreen = () => {
     });
   }
 
+  const showPrompt = () => {
+    Alert.prompt(
+      'Correo Electrónico',
+      'Texto de pruebas para el prompt presente',
+      ( value: string ) => console.log({ value }),
+      'secure-text',
+      'Soy el valor por defecto',
+      'number-pad'
+    );
+  }
+
   return (
     <CustomView style={ globalStyles.globalMargin }>
       <Title
@@ -75,7 +85,7 @@ export const AlertScreen = () => {
 
       <Button
         text='Prompt - Input'
-        onPress={ () => {} }
+        onPress={ showPrompt }
       />
     </CustomView>
   );

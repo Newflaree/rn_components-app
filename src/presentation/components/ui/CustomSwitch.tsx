@@ -22,15 +22,21 @@ export const CustomSwitch = ({
   text,
   onChange
 }: Props) => {
-
   return (
     <View style={ styles.switchRow }>
       {
-        text && <Text style={{ color: colors.text }}>{ text }</Text>
+        text &&
+          <Text style={{ color: colors.text }}>
+            { text }
+          </Text>
       }
 
       <Switch
-        thumbColor={ Platform.OS === 'android' ? colors.primary : '' }
+        thumbColor={
+          Platform.OS === 'android'
+            ? colors.primary
+            : ''
+        }
         ios_backgroundColor="#3E3E3E"
         onValueChange={ onChange }
         value={ isOn }

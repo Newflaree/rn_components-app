@@ -6,6 +6,7 @@ import {
   Easing,
 } from 'react-native';
 
+
 export const useAnimation = () => {
   const animatedOpacity = useRef( new Animated.Value( 0 ) ).current;
   const animatedTop = useRef( new Animated.Value( 0 ) ).current;
@@ -15,16 +16,6 @@ export const useAnimation = () => {
     toValue = 1,
     callback = () => {}
   }) => {
-    /*
-    Animated.timing( animatedTop, {
-      toValue: 0,
-      duration: 700,
-      useNativeDriver: true,
-      easing: Easing.bounce
-      //easing: Easing.elastic( 1 )
-    }).start( () => console.log( 'Animation ended' ) );
-     * */
-
     Animated.timing( animatedOpacity, {
       toValue: toValue,
       duration: duration,
@@ -42,7 +33,6 @@ export const useAnimation = () => {
       duration: duration,
       useNativeDriver: true
     }).start( callback );
-    //}).start( () => animatedTop.resetAnimation() );
   }
 
   const startMovingTopPosition = ({
