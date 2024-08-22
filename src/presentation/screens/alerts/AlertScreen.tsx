@@ -3,6 +3,8 @@ import {
   Alert,
   View
 } from 'react-native';
+// Adapters
+import { showPrompt } from '../../../config';
 // Components
 import {
   Button,
@@ -51,7 +53,19 @@ export const AlertScreen = () => {
     });
   }
 
-  const showPrompt = () => {
+  const onShowPrompt = () => {
+    showPrompt({
+      title: 'Test Title',
+      subTitle: 'jfdlja jkdaj jkdja lfjasljf kdl',
+      buttons: [
+        { text: 'Ok', onPress: () => console.log( 'ok' ) },
+        { text: 'Cancel', onPress: () => console.log( 'cancel' ), style: 'cancel' },
+      ],
+      placeholder: 'Placeholder'
+    });
+
+    /*     
+    // ! Codigo Nativo
     Alert.prompt(
       'Correo Electrónico',
       'Texto de pruebas para el prompt presente',
@@ -60,6 +74,7 @@ export const AlertScreen = () => {
       'Soy el valor por defecto',
       'number-pad'
     );
+     * */
   }
 
   return (
@@ -85,7 +100,7 @@ export const AlertScreen = () => {
 
       <Button
         text='Prompt - Input'
-        onPress={ showPrompt }
+        onPress={ onShowPrompt }
       />
     </CustomView>
   );
