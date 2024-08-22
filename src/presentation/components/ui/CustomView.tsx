@@ -13,16 +13,19 @@ import { globalStyles } from '../../../config';
 interface Props {
   style?: StyleProp<ViewStyle>;
   children?: ReactNode;
+  margin?: boolean;
 }
 
 export const CustomView = ({
   style,
-  children
+  children,
+  margin = false
 }: Props) => {
   return (
     <View
       style={[
         globalStyles.mainContainer,
+        margin ? globalStyles.globalMargin : null,
         style
       ]}
     >
