@@ -4,4 +4,5 @@ export * from './CustomSwitch';
 export * from './CustomView';
 export * from './MenuItem';
 export * from './Separator';
+export * from './SubTitle';
 export * from './Title';

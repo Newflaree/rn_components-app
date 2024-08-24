@@ -5,6 +5,7 @@ import {
   AlertScreen,
   Animation101Screen,
   Animation102Screen,
+  CustomSectionListScreen,
   HomeScreen,
   PullToRefreshScreen,
   SwitchScreen,
@@ -50,6 +51,10 @@ export const StackNavigator = () => {
       <Stack.Screen
         name='PullToRefreshScreen'
         component={ PullToRefreshScreen }
+      />
+      <Stack.Screen
+        name='CustomSectionListScreen'
+        component={ CustomSectionListScreen }
       />
     </Stack.Navigator>
   )
