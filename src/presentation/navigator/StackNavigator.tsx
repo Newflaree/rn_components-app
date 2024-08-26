@@ -7,6 +7,7 @@ import {
   Animation102Screen,
   CustomSectionListScreen,
   HomeScreen,
+  InfiniteScrollScreen,
   ModalScreen,
   PullToRefreshScreen,
   SwitchScreen,
@@ -60,6 +61,10 @@ export const StackNavigator = () => {
       <Stack.Screen
         name='ModalScreen'
         component={ ModalScreen }
+      />
+      <Stack.Screen
+        name='InfiniteScrollScreen'
+        component={ InfiniteScrollScreen }
       />
     </Stack.Navigator>
   )
