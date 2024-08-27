@@ -2,7 +2,9 @@
 import { useState } from 'react';
 // React Native
 import {
+  ActivityIndicator,
   FlatList,
+  Image,
   Text,
   View
 } from 'react-native';
@@ -27,28 +29,39 @@ export const InfiniteScrollScreen = () => {
   }
 
   return (
-    <CustomView margin>
-      <Title text='Infinite Scroll' safe />
-
+    <View style={{ backgroundColor: 'black' }}>
       <FlatList
         data={ numbers }
         onEndReached={ loadMore }
         onEndReachedThreshold={ 0.6 }
         keyExtractor={ ( item ) => item.toString() }
 
-        renderItem={ ({ item }) => 
-          <Text
-            style={{
-              height: 300,
-              backgroundColor: colors.primary,
-              color: 'white',
-              fontSize: 50
-            }}
-          >
-            { item }
-          </Text> 
-        }
+        renderItem={ ({ item }) => <ListItem number={ item } /> }
+        ListFooterComponent={ () => (
+          <View style={{ height: 150, justifyContent: 'center' }}>
+            <ActivityIndicator size={ 40 } color={ colors.primary } />
+          </View>
+        )}
       />
-    </CustomView>
+    </View>
+  );
+}
+
+
+interface ListItemProps {
+  number: number;
+}
+
+const ListItem = ({ number }: ListItemProps) => {
+  const url = `https://picsum.photos/id/{}/200/300`
+
+  return (
+    <Image
+      source={{ uri: `https://picsum.photos/id/${ number }/500/400` }}
+      style={{
+        height: 400,
+        width: '100%'
+      }}
+    />
   );
 }
