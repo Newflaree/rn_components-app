@@ -1,12 +1,23 @@
+// React
+import {
+  useRef,
+  useState
+} from 'react';
 // React Native
 import {
   FlatList,
   Image,
   ImageSourcePropType,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
   Text,
   useWindowDimensions,
   View
 } from 'react-native';
+// React Navigation
+import { useNavigation } from '@react-navigation/native';
+// Components
+import { Button } from '../../components';
 // Styles
 import {
   colors,
@@ -39,6 +50,26 @@ const items: Slide[] = [
 ];
 
 export const SlidesScreen = () => {
+  const [ currentSlideIndex, setCurrentSlideIndex ] = useState( 0 );
+  const flatListRef = useRef<FlatList>( null );
+  const navigation = useNavigation();
+
+  const onScroll = ( event: NativeSyntheticEvent<NativeScrollEvent> ) => {
+    const { contentOffset, layoutMeasurement } = event.nativeEvent;
+    const currentIndex = Math.floor( contentOffset.x / layoutMeasurement.width );
+
+    setCurrentSlideIndex( currentIndex > 0 ? currentIndex : 0 );
+  }
+
+  const scrollToSlide = ( index: number ) => {
+    if ( !flatListRef.current ) return;
+
+    flatListRef.current.scrollToIndex({
+      index: index,
+      animated: true
+    });
+  }
+
   return (
     <View
       style={{
@@ -47,6 +78,7 @@ export const SlidesScreen = () => {
       }}
     >
       <FlatList
+        ref={ flatListRef }
         data={ items }
         keyExtractor={ ( item ) => item.title }
 
@@ -55,7 +87,34 @@ export const SlidesScreen = () => {
         horizontal
         pagingEnabled
         scrollEnabled={ false }
+        onScroll={ onScroll }
       />
+
+      {
+        currentSlideIndex === items.length - 1 ? (
+          <Button
+            text='Finalizar'
+            onPress={ () => navigation.goBack() }
+            styles={{
+              position: 'absolute',
+              bottom: 60,
+              right: 30,
+              width: 100
+            }}
+          />
+        ) : (
+          <Button
+            text='Siguiente'
+            onPress={ () => scrollToSlide( currentSlideIndex + 1 ) }
+            styles={{
+              position: 'absolute',
+              bottom: 60,
+              right: 30,
+              width: 100
+            }}
+          />
+        )
+      }
     </View>
   );
 }
