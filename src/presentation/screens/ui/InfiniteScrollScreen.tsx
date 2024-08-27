@@ -11,6 +11,7 @@ import {
 // Components
 import {
   CustomView,
+  FadeInImage,
   Title
 } from '../../components';
 // Styles
@@ -56,12 +57,19 @@ const ListItem = ({ number }: ListItemProps) => {
   const url = `https://picsum.photos/id/{}/200/300`
 
   return (
-    <Image
-      source={{ uri: `https://picsum.photos/id/${ number }/500/400` }}
+    <FadeInImage
+      uri={ `https://picsum.photos/id/${ number }/500/400` }
       style={{
-        height: 400,
-        width: '100%'
+         height: 400,
+         width: '100%'
       }}
     />
+    //<Image
+    //source={{ uri: `https://picsum.photos/id/${ number }/500/400` }}
+    //style={{
+    //   height: 400,
+    //   width: '100%'
+    //}}
+    ///>
   );
 }
