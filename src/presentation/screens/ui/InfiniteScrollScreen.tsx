@@ -19,7 +19,7 @@ import { colors } from '../../../config';
 
 
 export const InfiniteScrollScreen = () => {
-  const [ numbers, setNumbers ] = useState([0,1,2,3,4,5]);
+  const [ numbers, setNumbers ] = useState([ 0, 1, 2, 3, 4, 5 ]);
 
   const loadMore = () => {
     const newArray = Array.from({ length: 5 }, ( _, i ) => numbers.length + i );
@@ -54,22 +54,15 @@ interface ListItemProps {
 }
 
 const ListItem = ({ number }: ListItemProps) => {
-  const url = `https://picsum.photos/id/{}/200/300`
+  const url = `https://picsum.photos/id/${ number }/500/400`
 
   return (
     <FadeInImage
-      uri={ `https://picsum.photos/id/${ number }/500/400` }
+      uri={ url }
       style={{
          height: 400,
          width: '100%'
       }}
     />
-    //<Image
-    //source={{ uri: `https://picsum.photos/id/${ number }/500/400` }}
-    //style={{
-    //   height: 400,
-    //   width: '100%'
-    //}}
-    ///>
   );
 }

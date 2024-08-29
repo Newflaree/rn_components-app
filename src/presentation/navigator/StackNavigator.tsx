@@ -5,6 +5,7 @@ import {
   AlertScreen,
   Animation101Screen,
   Animation102Screen,
+  ChangeThemeScreen,
   CustomSectionListScreen,
   HomeScreen,
   InfiniteScrollScreen,
@@ -71,6 +72,10 @@ export const StackNavigator = () => {
       <Stack.Screen
         name='SlidesScreen'
         component={ SlidesScreen }
+      />
+      <Stack.Screen
+        name='ChangeThemeScreen'
+        component={ ChangeThemeScreen }
       />
     </Stack.Navigator>
   )
