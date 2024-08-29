@@ -1,3 +1,5 @@
+// React
+import { useContext } from 'react';
 // React Native
 import {
   Text,
@@ -9,23 +11,27 @@ import {
   CustomView,
   Title
 } from '../../components';
+// Context
+import { ThemeContext } from '../../context';
 
 
 export const ChangeThemeScreen = () => {
+  const { setTheme } = useContext( ThemeContext )
+
   return (
     <CustomView margin>
       <Title text='Cambiar tema' safe />
 
       <Button
         text='Light'
-        onPress={ () => {} }
+        onPress={ () => setTheme( 'light' ) }
       />
 
       <View style={{ height: 10 }} />
 
       <Button
         text='Dark'
-        onPress={ () => {} }
+        onPress={ () => setTheme( 'dark' ) }
       />
     </CustomView>
   );
