@@ -7,6 +7,9 @@ import {
   StyleSheet,
   View
 } from 'react-native';
+// Components
+import { CustomView } from '../../components';
+
 
 export const Animation102Screen = () => {
   const pan = useRef( new Animated.ValueXY() ).current;
@@ -37,12 +40,16 @@ export const Animation102Screen = () => {
   });
 
   return (
-    <View style={ styles.container }>
+    <CustomView style={{
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
+    }}>
       <Animated.View
         { ...panResponder.panHandlers }
         style={[ pan.getLayout(), styles.box ]}
       />
-    </View>
+    </CustomView>
   );
 }
 

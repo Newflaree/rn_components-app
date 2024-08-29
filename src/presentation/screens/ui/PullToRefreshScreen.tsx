@@ -1,5 +1,8 @@
 // React
-import { useState } from 'react';
+import {
+  useContext,
+  useState
+} from 'react';
 // React Native
 import {
   RefreshControl,
@@ -10,14 +13,16 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   Title
 } from '../../components';
+// Context
+import { ThemeContext } from '../../context';
 // Styles
 import {
-  colors,
   globalStyles
 } from '../../../config';
 
 
 export const PullToRefreshScreen = () => {
+  const { colors } = useContext( ThemeContext );
   const [ isRefreshing, setIsRefreshing ] = useState( false );
   const { top } = useSafeAreaInsets();
 
@@ -39,7 +44,7 @@ export const PullToRefreshScreen = () => {
           onRefresh={ onRefresh }
         />
       }
-      style={[ globalStyles.mainContainer, globalStyles.globalMargin ]}
+      style={[ globalStyles.mainContainer, globalStyles.globalMargin, { backgroundColor: colors.cardBackground } ]}
     >
       <Title text='Pull to refresh' safe />
     </ScrollView>

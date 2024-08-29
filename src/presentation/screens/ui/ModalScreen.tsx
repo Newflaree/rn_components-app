@@ -1,5 +1,8 @@
 // React
-import { useState } from 'react';
+import {
+  useContext,
+  useState
+} from 'react';
 // React Native
 import {
   Modal,
@@ -13,9 +16,12 @@ import {
   CustomView,
   Title
 } from '../../components';
+// Context
+import { ThemeContext } from '../../context';
 
 
 export const ModalScreen = () => {
+  const { colors } = useContext( ThemeContext );
   const [ isVisible, setIsVisible ] = useState( false );
 
   return (
@@ -34,7 +40,7 @@ export const ModalScreen = () => {
         <View
           style={{
             flex: 1,
-            backgroundColor: 'rgba(0,0,0,0.1)'
+            backgroundColor: colors.cardBackground
           }}
         >
           <View style={{ paddingHorizontal: 10 }}>

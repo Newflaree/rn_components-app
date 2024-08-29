@@ -1,3 +1,5 @@
+// React
+import { useContext } from 'react';
 // React Native
 import {
   Alert,
@@ -11,11 +13,15 @@ import {
   Title,
   CustomView
 } from '../../components';
+// Context
+import { ThemeContext } from '../../context';
 // Styles
 import { globalStyles } from '../../../config';
 
 
 export const AlertScreen = () => {
+  const { isDark } = useContext( ThemeContext );
+
   const createTwoButtonAlert = () => {
     Alert.alert( 'Alert Title', 'My alert Msg', [
       {
@@ -27,7 +33,9 @@ export const AlertScreen = () => {
         text: 'OK',
         onPress: () => console.log( 'OK Pressed' )
       }
-    ]);
+    ], {
+      userInterfaceStyle: isDark ? 'dark' : 'light'
+    });
   }
 
   const createThreeButtonAlert = () => {
@@ -49,7 +57,8 @@ export const AlertScreen = () => {
       cancelable: true,
       onDismiss() {
         console.log( 'onDismiss' );
-      }
+      },
+      userInterfaceStyle: isDark ? 'dark' : 'light'
     });
   }
 

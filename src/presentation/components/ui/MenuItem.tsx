@@ -1,5 +1,8 @@
 // React
-import { Fragment } from 'react';
+import {
+  Fragment,
+  useContext
+} from 'react';
 // React Native
 import {
   Text,
@@ -13,8 +16,8 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 // Conponents
 import { Separator } from '../../components';
-// Styles
-import { colors } from '../../../config';
+// Context
+import { ThemeContext } from '../../context';
 
 
 interface Props {
@@ -33,6 +36,7 @@ export const MenuItem = ({
   isFirst,
   isLast
 }: Props) => {
+  const { colors } = useContext( ThemeContext );
   const navigation = useNavigation<any>();
 
   return (

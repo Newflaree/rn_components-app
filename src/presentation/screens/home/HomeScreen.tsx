@@ -1,3 +1,5 @@
+// React
+import { useContext } from 'react';
 // React Native
 import {
   ScrollView,
@@ -5,9 +7,12 @@ import {
 } from 'react-native';
 // Components
 import {
+  CustomView,
   MenuItem,
   Title
 } from '../../components';
+// Context
+import { ThemeContext } from '../../context';
 // Styles
 import { globalStyles } from '../../../config';
 
@@ -81,9 +86,10 @@ const uiMenuItems = [
 ];
 
 export const HomeScreen = () => {
+  const { colors } = useContext( ThemeContext );
+
   return (
-    <View style={ globalStyles.mainContainer }>
-      <View style={ globalStyles.globalMargin }>
+    <CustomView margin>
         <ScrollView>
           <Title
             safe
@@ -127,7 +133,6 @@ export const HomeScreen = () => {
             ))
           }
         </ScrollView>
-      </View>
-    </View>
+    </CustomView>
   );
 }

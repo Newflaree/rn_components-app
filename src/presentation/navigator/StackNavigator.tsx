@@ -1,3 +1,5 @@
+// React
+import { useContext } from 'react';
 // React Navigation
 import { createStackNavigator } from '@react-navigation/stack';
 // Screens
@@ -15,15 +17,22 @@ import {
   SwitchScreen,
   TextInputScreen,
 } from '../screens';
+// Context
+import { ThemeContext } from '../context';
 
 
 const Stack = createStackNavigator();
 
 export const StackNavigator = () => {
+  const { colors } = useContext( ThemeContext );
+
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: false
+        headerShown: false,
+        cardStyle: {
+          backgroundColor: colors.background
+        }
       }}
     >
       <Stack.Screen

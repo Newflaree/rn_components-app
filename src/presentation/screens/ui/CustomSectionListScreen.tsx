@@ -1,3 +1,5 @@
+// React
+import { useContext } from 'react';
 // React Native
 import {
   Text,
@@ -15,11 +17,12 @@ import {
 } from '../../components';
 // Database
 import { houses } from '../../../database';
-// Styles
-import { colors } from '../../../config';
+// Context
+import { ThemeContext } from '../../context';
 
 
 export const CustomSectionListScreen = () => {
+  const { colors } = useContext( ThemeContext );
   const { height } = useWindowDimensions();
   const { top } = useSafeAreaInsets();
 
@@ -31,7 +34,7 @@ export const CustomSectionListScreen = () => {
         <SectionList
           sections={ houses }
           keyExtractor={ (item) => item }
-          renderItem={ ({ item }) => <Text style={{ marginVertical: 2 }}>{ item }</Text> }
+          renderItem={ ({ item }) => <Text style={{ marginVertical: 2, color: colors.text }}>{ item }</Text> }
           renderSectionHeader={ 
             ({ section }) => <SubTitle
               text={ section.title }

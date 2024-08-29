@@ -1,3 +1,5 @@
+// React
+import { useContext } from 'react';
 // React Native
 import {
   Animated,
@@ -7,13 +9,16 @@ import {
   Text,
   View
 } from 'react-native';
+// Components
+import { CustomView } from '../../components';
+// Context
+import { ThemeContext } from '../../context';
 // Custom Hook
 import { useAnimation } from '../../hooks';
-// Theme
-import { colors } from '../../../config';
 
 
 export const Animation101Screen = () => {
+  const { colors } = useContext( ThemeContext );
   const {
     animatedOpacity,
     animatedTop,
@@ -23,11 +28,13 @@ export const Animation101Screen = () => {
   } = useAnimation();
 
   return (
-    <View style={ styles.container }>
+    <CustomView style={{ flex: 1, justifyContent: 'center', alignItems: 'center'  }}>
       <Animated.View style={[
-        styles.purpleBox,
         {
+          backgroundColor: colors.primary,
           opacity: animatedOpacity,
+          width: 150,
+          height: 150,
           transform: [{
             translateY: animatedTop
           }]
@@ -45,28 +52,15 @@ export const Animation101Screen = () => {
           });
         }}
       >
-        <Text>FadeIn</Text>
+        <Text style={{ color: colors.text }}>FadeIn</Text>
       </Pressable>
 
       <Pressable
         style={{ marginTop: 10 }}
         onPress={ () => fadeOut({}) }
       >
-        <Text>FadeOut</Text>
+        <Text style={{ color: colors.text }}>FadeOut</Text>
       </Pressable>
-    </View>
+    </CustomView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    flex: 1,
-    justifyContent: 'center',
-  },
-  purpleBox: {
-    backgroundColor: colors.primary,
-    width: 150,
-    height: 150
-  }
-});
